@@ -20,8 +20,13 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
 // Define the database URL to connect to.
-const mongoDB =
-  "mongodb+srv://dev-0:UKcAw1JazYUDGZhC@dev-0.rafqsz7.mongodb.net/express-test";
+const dbHost = process.env.DB_HOST;
+const dbName = process.env.DB_NAME;
+const dbUser = process.env.DB_USER;
+const dbPass = process.env.DB_PASS;
+
+// Define the database URL to connect to.
+const mongoDB = `mongodb+srv://${dbUser}:${dbPass}@${dbHost}/${dbName}`;
 
 // Wait for database to connect, logging an error if there is a problem
 main().catch((err) => console.log(err));
